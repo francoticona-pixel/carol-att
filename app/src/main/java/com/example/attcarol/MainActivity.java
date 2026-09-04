@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
 
+                // Alterado de HomeActivity para PerfilActivity conforme solicitado
                 Intent intent = new Intent(
                         MainActivity.this,
-                        HomeActivity.class
+                        PerfilActivity.class
                 );
 
                 intent.putExtra("nome", nome);

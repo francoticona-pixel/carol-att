@@ -1,33 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="30dp">
+    android:background="@color/screen_bg">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PERFIL"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"/>
-
-    <TextView
-        android:id="@+id/txtPerfilNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nome:"
-        android:textSize="22sp"
-        android:layout_marginBottom="30dp"/>
-
-    <Button
-        android:id="@+id/btnVoltar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="VOLTAR"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-</LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <!-- Fundo Roxo do Topo -->
+            <View
+                android:id="@+id/header_bg"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@drawable/bg_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Botão Voltar -->
+            <ImageButton
+                android:id="@+id/btnVoltar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/card_white"
+                android:backgroundTint="#8B70B4"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@android:drawable/ic_menu_revert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <!-- Título Central -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/btnVoltar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnVoltar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐾"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Conheça o Isagi"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Coração Superior -->
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="20dp"
+                android:src="@android:drawable/btn_star_big_on"
+                app:layout_constraintBottom_toBottomOf="@+id/btnVoltar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnVoltar"
+                app:tint="#F08080" />
+
+            <!-- Imagem de Perfil Circular -->
+            <FrameLayout
+                android:id="@+id/profile_container"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="90dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="6dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/captura_de_tela_2026_09_04_094944"
+                    app:shapeAppearanceOverlay="@style/CircleImage" />
+
+                <!-- Badge de Coração na Foto -->
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/card_white"
+                    android:backgroundTint="#8B70B4"
+                    android:elevation="4dp"
+                    android:padding="10dp"
+                    android:src="@android:drawable/btn_star_big_on"
+                    app:tint="#F08080" />
+            </FrameLayout>
+
+            <!-- Card de Informações -->
+            <LinearLayout
+                android:id="@+id/info_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/card_white"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/profile_container">
+
+                <!-- Item Nome -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="10dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="🐱" android:textSize="18sp" />
+                    <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Nome" android:textColor="@color/text_dark" android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtPerfilNome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Isagi"
+                        android:textColor="@color/text_dark" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" />
+
+                <!-- Item Espécie -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="10dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="🐾" android:textSize="18sp" />
+                    <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Espécie" android:textColor="@color/text_dark" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gato 🐈" android:textColor="@color/text_dark" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" />
+
+                <!-- Item Idade -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="10dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="📅" android:textSize="18sp" />
+                    <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Idade" android:textColor="@color/text_dark" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 ano" android:textColor="@color/text_dark" />
+                </LinearLayout>
+                <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#F0F0F0" />
+
+                <!-- Item Personalidade -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:paddingVertical="10dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="⭐" android:textSize="18sp" />
+                    <TextView android:layout_width="110dp" android:layout_height="wrap_content" android:text="Personalidade" android:textColor="@color/text_dark" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Curioso, brincalhão e dorminhoco 😴" android:textColor="@color/text_dark" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Seção Sobre -->
+            <LinearLayout
+                android:id="@+id/desc_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_description"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintTop_toBottomOf="@id/info_card">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sobre o Isagi"
+                    android:textColor="@color/text_dark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="Isagi é um gatinho muito especial! Ele adora explorar novos lugares, brincar com seus brinquedos favoritos e tirar aquele cochilo gostoso no sol. Muito carinhoso e companheiro, ele conquista todos por onde passa. 🐾💜"
+                    android:textColor="@color/text_dark"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Botão Conhecer Mais -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnConhecerMais"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/botao_roxo"
+                android:text="🐾 CONHECER MAIS  →"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/desc_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

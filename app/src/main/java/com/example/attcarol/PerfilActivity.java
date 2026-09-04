@@ -1,7 +1,7 @@
 package com.example.attcarol;
 
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PerfilActivity extends AppCompatActivity {
 
     TextView txtPerfilNome;
-    Button btnVoltar;
+    ImageButton btnVoltar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +22,14 @@ public class PerfilActivity extends AppCompatActivity {
 
         String nome = getIntent().getStringExtra("nome");
 
-        if (nome != null) {
-            txtPerfilNome.setText("Nome: " + nome);
+        if (nome != null && txtPerfilNome != null) {
+            txtPerfilNome.setText(nome);
         }
 
-        btnVoltar.setOnClickListener(v -> {
-            finish();
-        });
+        if (btnVoltar != null) {
+            btnVoltar.setOnClickListener(v -> {
+                finish();
+            });
+        }
     }
 }
